@@ -8,10 +8,9 @@ class FileStorage:
     __file_path = 'file.json'
     __objects = {}
 
-
     def delete(self, obj=None):
-	"""Returns a dictionary of models currently in storage"""
-	if obj is not None:
+        """Returns a dictionary of models currently in storage"""
+        if obj is not None:
             key = f"{obj.__class__.__name__}.{obj.id}"
             if key in FileStorage.__objects:
                 del FileStorage.__objects[key]
