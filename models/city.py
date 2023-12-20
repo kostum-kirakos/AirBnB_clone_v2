@@ -13,7 +13,7 @@ class City(BaseModel, Base):
 
     __tablename__ = 'cities'
     if STORAGE == "db":
-        state_id = Column(String(60), ForeignKey('state_id'), nullable=False)
+        state_id = Column(String(60), ForeignKey("state.id"), nullable=False)
         name = Column(String(128), nullable=False)
     else:
         state_id = ""
