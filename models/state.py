@@ -8,6 +8,7 @@ from sqlalchemy.orm import relationship
 
 STORAGE = getenv("HBNB_TYPE_STORAGE")
 
+
 class State(BaseModel, Base):
     """ State class """
     __tablename__ = 'states'
@@ -17,7 +18,7 @@ class State(BaseModel, Base):
                               cascade="all, delete-orphan")
     else:
         name = ""
-        
+
         @property
         def cities(self):
             """Returns the cities"""
