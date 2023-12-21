@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+""" new class for sqlAlchemy """
 from os import getenv
 from sqlalchemy.orm import sessionmaker, scoped_session
 from sqlalchemy import create_engine
@@ -66,3 +68,8 @@ class DBStorage:
         Base.metadata.create_all(self.__engine)
         Session = sessionmaker(bind=self.__engine, expire_on_commit=False)
         self.__session = scoped_session(Session)
+
+    def close(self):
+        """ calls remove()
+        """
+        self.__session.remove()

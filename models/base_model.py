@@ -4,7 +4,6 @@ import uuid
 from datetime import datetime
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, String, DateTime
-import models
 
 Base = declarative_base()
 
@@ -18,6 +17,8 @@ class BaseModel:
 
     def __init__(self, *args, **kwargs):
         """Instatntiates a new model"""
+        from models import storage
+
         if kwargs:
             for key, value in kwargs.items():
                 if key == "created_at" or key == "updated_at":
@@ -44,8 +45,8 @@ class BaseModel:
         from models import storage
 
         self.updated_at = datetime.now()
-        models.storage.new(self)
-        models.storage.save()
+        storage.new(self)
+        storage.save()
 
     def to_dict(self):
         """Convert instance into dict format"""
@@ -61,4 +62,6 @@ class BaseModel:
 
     def delete(self):
         """ delete object """
-        models.storage.delete(self)
+        from models import storage
+
+        storage.delete(self)
