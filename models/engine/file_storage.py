@@ -5,16 +5,8 @@ import json
 
 class FileStorage:
     """This class manages storage of hbnb models in JSON format"""
-    __file_path = 'file.json'
+    __file_path = "file.json"
     __objects = {}
-
-    def delete(self, obj=None):
-        """Returns a dictionary of models currently in storage"""
-        if obj is not None:
-            key = f"{obj.__class__.__name__}.{obj.id}"
-            if key in FileStorage.__objects:
-                del FileStorage.__objects[key]
-            self.save()
 
     def all(self, cls=None):
         """Returns a dictionary of models currently in storage"""
@@ -63,3 +55,18 @@ class FileStorage:
                     self.all()[key] = classes[val['__class__']](**val)
         except FileNotFoundError:
             pass
+
+    def delete(self, obj=None):
+        """A method that deletes a given object from __objects"""
+        if obj is not None:
+            key = f"{obj.__class__.__name__}.{obj.id}"
+            if key in FileStorage.__objects:
+                del FileStorage.__objects[key]
+                self.save
+
+    def close(self):
+        """
+        A method that calls the reload() method for deserializing
+        the JSON file to objects
+        """
+        self.reload()
