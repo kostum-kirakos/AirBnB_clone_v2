@@ -2,8 +2,7 @@
 """Starts a Flask web application.
 """
 from models import storage
-from flask import Flask
-from flask import render_template
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
@@ -11,7 +10,6 @@ app = Flask(__name__)
 @app.route("/states", strict_slashes=False)
 def states():
     """Displays an HTML page with a list of all States.
-
     States are sorted by name.
     """
     states = storage.all("State")
@@ -34,4 +32,4 @@ def teardown(exc):
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(host="0.0.0.0")
