@@ -53,7 +53,7 @@ def numberEvenOdd(n):
         if n % 2 == 0:
             return render_template("6-number_odd_or_even.html",
                                    num=n, state="even")
-        else
+        else:
             return render_template("6-number_odd_or_even.html",
                                    num=n, state="odd")
 
