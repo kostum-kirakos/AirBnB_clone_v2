@@ -31,5 +31,6 @@ def pyth(text="is cool"):
     text = text.replace("_", " ")
     return f"Python {text}"
 
+
 if __name__ == "__main__":
     app.run()
